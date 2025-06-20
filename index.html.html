@@ -1,0 +1,649 @@
+('<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SAIMUN HASAN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to bottom right, #dff4ff, #d2e0ff);
+      color: #0f172a;
+      background-size: cover;
+      min-height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3.5rem;
+      padding: 40px 0 10px;
+      background: linear-gradient(to right, #f97316, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .container {
+      max-width: 1800px;
+      margin: auto;
+      padding: 40px;
+      border-radius: 24px;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #14b8a6;
+      display: inline-block;
+      color: #14b8a6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 12px;
+      padding: 12px 18px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    label:hover {
+      background: rgba(255,255,255,0.9);
+      transform: scale(1.02);
+    }
+
+    select, input[type="datetime-local"], button {
+      padding: 12px 16px;
+      font-size: 1rem;
+      border-radius: 12px;
+      border: 1px solid #94a3b8;
+      margin: 10px 0;
+      width: 100%;
+    }
+
+    button {
+      background: rgba(255, 255, 255, 0.3);
+      color: #111827;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.15);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background: rgba(255, 255, 255, 0.45);
+      transform: scale(1.04);
+      color: #000000;
+    }
+
+    .result {
+      background: rgba(0,0,0,0.05);
+      padding: 20px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      margin-top: 20px;
+      min-height: 120px;
+    }
+
+    .about {
+      margin-top: 40px;
+      font-size: 0.95rem;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    audio {
+      display: none;
+    }
+  
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px;
+  border-radius: 24px;
+  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+}
+
+button.generate-btn {
+  background-color: #0ea5e9;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 14px 28px;
+  border-radius: 14px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button.generate-btn:hover {
+  background-color: #0284c7;
+}
+
+.signal-item {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 10px 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #0f172a;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.signal-direction.call {
+  color: green;
+}
+
+.signal-direction.put {
+  color: red;
+}
+
+.loading-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+  color: #1e293b;
+}
+
+
+.direction-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.direction-buttons button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  background: white;
+  border: 1px solid #94a3b8;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.direction-buttons button.active {
+  background-color: #0284c7;
+  color: white;
+}
+
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.controls-col {
+  flex: 1;
+  min-width: 200px;
+}
+
+button.generate-btn, button.download-btn {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.results-container {
+  margin-top: 30px;
+}
+
+.signal-output {
+  background: rgba(240, 240, 240, 0.6);
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 100px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.stats-panel {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 12px;
+}
+
+.stat-item {
+  margin-bottom: 8px;
+}
+
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0;
+  align-items: flex-end;
+}
+
+.controls-col {
+  flex: 1;
+  min-width: 200px;
+}
+
+button.generate-btn {
+  background-color: #0284c7;
+  font-weight: bold;
+  padding: 14px 24px;
+  font-size: 1rem;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  width: 100%;
+  margin-top: 20px;
+}
+
+button.generate-btn:hover {
+  background-color: #0369a1;
+}
+
+.direction-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.direction-buttons button {
+  flex: 1;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: white;
+  border: 1px solid #94a3b8;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.direction-buttons button.active {
+  background-color: #0284c7;
+  color: white;
+}
+
+.stats-panel {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 12px;
+}
+
+
+.copy-btn {
+  background-color: #10b981;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.copy-btn:hover {
+  background-color: #059669;
+}
+
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+    padding: 20px 0 10px;
+  }
+
+  .container {
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+
+  .controls-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .controls-col {
+    width: 100%;
+  }
+
+  .checkbox-group {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+  }
+
+  .signal-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .copy-btn, .generate-btn {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+
+.avoid-rules {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: #64748b;
+  margin-top: 10px;
+  line-height: 1.4;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 10px;
+}
+
+</style>
+</head>
+<body>
+  <div class="container animate__animated animate__fadeIn">
+    <h1>SAIMUN HASAN GENERATOR</h1>
+    
+    <div class="markets-container">
+      <div class="market-section">
+        <div class="section-title">FOREX MARKET</div>
+        <div class="checkbox-group" id="pairList">
+          <label><input type="checkbox" value="EUR/GBP">EUR/GBP</label>
+          <label><input type="checkbox" value="EUR/USD">EUR/USD</label>
+          <label><input type="checkbox" value="USD/CAD">USD/CAD</label>
+          <label><input type="checkbox" value="USD/JPY">USD/JPY</label>
+          <label><input type="checkbox" value="EUR/CAD">EUR/CAD</label>
+          <label><input type="checkbox" value="GBP/AUD">GBP/AUD</label>
+          <label><input type="checkbox" value="CAD/JPY">CAD/JPY</label>
+          <label><input type="checkbox" value="AUD/JPY">AUD/JPY</label>
+          <label><input type="checkbox" value="AUD/CAD">AUD/CAD</label>
+          <label><input type="checkbox" value="AUD/NZD">AUD/NZD</label>
+          <label><input type="checkbox" value="GBP/USD">GBP/USD</label>
+          <label><input type="checkbox" value="GBP/CHF">GBP/CHF</label>
+          <label><input type="checkbox" value="USD/CHF">USD/CHF</label>
+        </div>
+      </div>
+
+      <div class="market-section">
+        <div class="section-title">OTC MARKET [Quotex]</div>
+        <div class="checkbox-group" id="otcList">
+          <label><input type="checkbox" value="NZD/USD-OTC">NZD/USD-OTC</label>
+          <label><input type="checkbox" value="BRL/USD-OTC">BRL/USD-OTC</label>
+          <label><input type="checkbox" value="USD/MXN-OTC">USD/MXN-OTC</label>
+          <label><input type="checkbox" value="USD/TRY-OTC">USD/TRY-OTC</label>
+          <label><input type="checkbox" value="AUD/USD-OTC">AUD/USD-OTC</label>
+          <label><input type="checkbox" value="USD/CHF-OTC">USD/CHF-OTC</label>
+          <label><input type="checkbox" value="EUR/JPY-OTC">EUR/JPY-OTC</label>
+          <label><input type="checkbox" value="EUR/GBP-OTC">EUR/GBP-OTC</label>
+          <label><input type="checkbox" value="GBP/JPY-OTC">GBP/JPY-OTC</label>
+          <label><input type="checkbox" value="EUR/AUD-OTC">EUR/AUD-OTC</label>
+          <label><input type="checkbox" value="NZD/USD-OTC">NZD/USD-OTC</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls-row">
+      <div class="controls-col">
+        <label>Number of Signals:
+          <select id="signalCount" class="animate__animated animate__fadeIn">
+            <option>5</option>
+            <option>10</option>
+            <option selected>15</option>
+            <option>20</option>
+            <option>25</option>
+            <option>30</option>
+          </select>
+        </label>
+      </div>
+      
+      <div class="controls-col">
+        <div style="color: var(--gold); margin-bottom: 12px; font-family: 'Cormorant Garamond', serif;">Direction:</div>
+        <div class="direction-buttons">
+          <button class="active" onclick="setDirection(this, 'BOTH')">BOTH</button>
+          <button onclick="setDirection(this, 'UP')">UP</button>
+          <button onclick="setDirection(this, 'DOWN')">DOWN</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls-row">
+      <div class="controls-col">
+        <label>Start Time:
+          <input type="datetime-local" id="startTime" value="2025-04-30T02:00">
+        </label>
+      </div>
+      
+      <div class="controls-col">
+        <label>End Time:
+          <input type="datetime-local" id="endTime" value="2025-04-30T08:00">
+        </label>
+      </div>
+    </div>
+
+    <button class="generate-btn" onclick="generateSignals()">
+      GENERATE PREMIUM SIGNALS
+    </button>
+    <button class="copy-btn" onclick="copySignals()">COPY ALL SIGNALS</button>
+
+    <div class="results-container">
+      <div class="signal-output" id="signalOutput">
+        <div class="empty-state">Your premium trading signals will appear here</div>
+      </div>
+      
+      <div class="stats-panel">
+        <div class="section-title">ABOUT IT</div>
+        <div class="stat-item">
+          <div class="stat-label">Avg Success Rate</div>
+          <div class="stat-value">85.7%</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Developer Telegram</div>
+          <div class="stat-value">@saimunhasanrashed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Signals Generation</div>
+          <div class="stat-value">5 - 30</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Bot Status</div>
+          <div class="stat-value">Free</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="watermark">SAIMUN HASAN VIP GENRATOR</div>
+  </div>
+
+  <script>
+    let selectedDirection = "BOTH";
+
+    function setDirection(button, direction) {
+      document.querySelectorAll(".direction-buttons button").forEach(btn => {
+        btn.classList.remove("active");
+        btn.classList.remove("animate__pulse");
+      });
+      
+      button.classList.add("active");
+      button.classList.add("animate__animated", "animate__pulse");
+      selectedDirection = direction;
+      
+      setTimeout(() => {
+        button.classList.remove("animate__animated", "animate__pulse");
+      }, 1000);
+    }
+
+    async function generateSignals() {
+      const output = document.getElementById('signalOutput');
+      const selectedPairs = [
+        ...document.querySelectorAll('#pairList input:checked'),
+        ...document.querySelectorAll('#otcList input:checked')
+      ].map(i => i.value);
+
+      const count = parseInt(document.getElementById("signalCount").value);
+      const startTimeStr = document.getElementById("startTime").value;
+
+      // Clear previous output and show loading
+      output.innerHTML = `
+        <div class="loading">
+          <div class="spinner"></div>
+          <div class="loading-text">Analyzing Market Data</div>
+        </div>
+      `;
+
+      // Simulate loading delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      if (!startTimeStr) {
+        output.innerHTML = `<div class="error-message">Please set a valid start time</div>`;
+        return;
+      }
+
+      if (selectedPairs.length === 0) {
+        output.innerHTML = `<div class="error-message">Please select at least one currency pair</div>`;
+        return;
+      }
+
+      const startTime = new Date(startTimeStr);
+      output.innerHTML = `
+        <div class="success-message animate__animated animate__fadeIn">
+          Generating ${count} Premium Trading Signals
+        </div>
+      `;
+
+      // Generate signals one by one with delay
+      for (let i = 0; i < count; i++) {
+        await new Promise(resolve => setTimeout(resolve, 150)); // Delay between signals
+        
+        const pair = selectedPairs[Math.floor(Math.random() * selectedPairs.length)];
+        let direction = selectedDirection;
+        
+        if (direction === "BOTH") {
+          direction = Math.random() > 0.5 ? "PUT" : "CALL";
+        } else if (direction === "UP") {
+          direction = "CALL";
+        } else {
+          direction = "PUT";
+        }
+
+        const signalTime = new Date(startTime);
+        signalTime.setMinutes(signalTime.getMinutes() + i * 7);
+        const timeStr = signalTime.toTimeString().slice(0, 5);
+        const dirClass = direction.toLowerCase();
+        const emoji = direction === "CALL" ? "📈" : "📉";
+
+        const signalElement = document.createElement('div');
+        signalElement.className = 'signal-item';
+        signalElement.style.animationDelay = `${i * 0.1}s`;
+        signalElement.innerHTML = `
+          <span class="signal-time">${timeStr}</span>
+          <span class="signal-pair">${pair}</span>
+          <span class="signal-direction ${dirClass}">${emoji} ${direction}</span>
+        `;
+        
+        output.appendChild(signalElement);
+
+      // Add avoid rules below signals
+      const avoidBlock = document.createElement('div');
+      avoidBlock.className = 'avoid-rules';
+      avoidBlock.innerHTML = `
+        <strong>Avoid Signal If:</strong> Doji, Long Wick, Flat, News, Low Volume, RSI Extreme<br/>
+        <em>Use only with trend confirmation.</em>
+      `;
+      output.appendChild(avoidBlock);
+
+      }
+    }
+  
+// Automatically set local timezone datetime defaults
+window.addEventListener('DOMContentLoaded', () => {
+  const startInput = document.getElementById('startTime');
+  const endInput = document.getElementById('endTime');
+
+  const now = new Date();
+  const pad = num => num.toString().padStart(2, '0');
+
+  const toLocalDatetime = date => {
+    const year = date.getFullYear();
+    const month = pad(date.getMonth() + 1);
+    const day = pad(date.getDate());
+    const hours = pad(date.getHours());
+    const minutes = pad(date.getMinutes());
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  };
+
+  const localStart = toLocalDatetime(now);
+  const localEnd = toLocalDatetime(new Date(now.getTime() + 6 * 60 * 60 * 1000));
+
+  startInput.value = localStart;
+  endInput.value = localEnd;
+});
+
+
+function copySignals() {
+  const outputDiv = document.getElementById("signalOutput");
+  const signals = outputDiv.querySelectorAll(".signal-item");
+
+  if (signals.length === 0) {
+    alert("No signals to copy!");
+    return;
+  }
+
+  let text = "";
+  signals.forEach(signal => {
+    const time = signal.querySelector(".signal-time")?.textContent.trim();
+    const pair = signal.querySelector(".signal-pair")?.textContent.trim();
+    const direction = signal.querySelector(".signal-direction")?.textContent.trim();
+    text += `${time} - ${pair} - ${direction}\n`;
+  });
+
+    const avoid = document.querySelector('.avoid-rules');
+  if (avoid) text += `\n\nAvoid Signal If: Doji, Long Wick, Flat, News, Low Volume, RSI Extreme\nUse only with trend confirmation.`;
+  navigator.clipboard.writeText(text).then(() => {
+    alert("Signals copied to clipboard!");
+  }).catch(err => {
+    alert("Failed to copy signals.");
+  });
+}
+
+</script>
+<audio autoplay="" loop="">
+<source src="https://cdn.pixabay.com/download/audio/2023/06/11/audio_6c3a7a6b77.mp3?filename=soft-piano-145980.mp3" type="audio/mpeg"/>
+</audio>
+</body>
+</html>'));
